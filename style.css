@@ -1,0 +1,713 @@
+/* Reset and Base Styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #090a0f;
+  color: #ffffff;
+  line-height: 1.6;
+  padding: 0 20px;
+  font-size: 16px;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding-bottom: 40px;
+  position: relative;
+}
+
+/* Typography */
+h1, h2, h3 {
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #ffffff;
+  text-decoration: none;
+  cursor: text;
+}
+
+.logo-icon {
+  color: #2563eb;
+}
+
+/* Typing effect animation for logo text */
+.logo-text {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid #2563eb;
+  width: 0;
+  /* animation: logoTyping 2s steps(7) forwards, logoBlink 0.75s step-end infinite; */
+  animation: logoTyping 2s steps(7) forwards, logoBlink 1s step-end 4 forwards;
+}
+
+.contact-btn {
+  background-color: #1d4ed8;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  animation: buttonGlow 3s infinite ease-in-out;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 40px 0 30px 0;
+}
+
+.badge {
+  display: inline-block;
+  background-color: #1e293b;
+  color: #60a5fa;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 28px;
+  letter-spacing: 0.05em;
+}
+
+.hero-title {
+  font-size: 42px;
+  line-height: 1.2;
+  margin-bottom: 24px;
+  /* Adds smooth pulsing luminescent text effect */
+  animation: heroGlow 4s infinite ease-in-out;
+}
+
+.highlight {
+  color: #3b82f6;
+  display: inline-block;
+}
+
+.hero-desc {
+  color: #94a3b8;
+  font-size: 18px;
+  margin-bottom: 36px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 10px;
+}
+
+.cta-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+#link-playstore {
+  color: #2563eb;
+}
+
+.btn-primary {
+  background-color: #2563eb;
+  color: #ffffff;
+  padding: 12px 28px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  animation: buttonGlow 3s infinite ease-in-out;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #ffffff;
+  padding: 12px 32px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid #1e293b;
+  display: inline-block;
+}
+
+.btn-secondary.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Specialties & Advantages Sections */
+.specialties, .advantages {
+  padding: 20px 0 30px 0;
+}
+
+.section-title {
+  font-size: 28px;
+  margin-bottom: 30px;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background-color: #2563eb;
+}
+
+.card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.card {
+  background-color: #11131c;
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  padding: 28px;
+  position: relative; /* Adicionado para suportar o selo informativo absoluto */
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+/* Card Information Badge & Tooltip Box */
+.card-info-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #475569;
+  font-size: 16px;
+  cursor: help;
+  z-index: 10;
+  transition: color 0.2s;
+}
+
+.card-info-badge:hover {
+  color: #3b82f6;
+}
+
+/* Tooltip Popup rendering via content attribute */
+.card-info-badge::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  right: 0;
+  width: 250px;
+  background-color: #1e293b;
+  color: #f8fafc;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 500;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+}
+
+.card-info-badge:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Card Header Layout */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.card-icon-wrapper {
+  background-color: #1e293b;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.card-icon {
+  color: #3b82f6;
+  font-size: 20px;
+}
+
+.card-title {
+  font-size: 20px;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.card-desc {
+  color: #94a3b8;
+  font-size: 15px;
+}
+
+/* Tech Stack Section (Infinite Scroll Marquee) */
+.tech-stack {
+  padding: 20px 0;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.tech-stack-title {
+  text-align: center;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #64748b;
+  margin-bottom: 24px;
+}
+
+.tech-track {
+  display: flex;
+  width: max-content;
+  gap: 40px;
+  animation: scrollTech 25s linear infinite;
+}
+
+.tech-group {
+  display: flex;
+  gap: 40px;
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.tech-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.tech-item i {
+  font-size: 14px;
+  color: #3b82f6;
+}
+
+/* Bottom CTA Banner */
+.cta-banner {
+  background-color: #11131c;
+  border: 1px solid #1e293b;
+  border-radius: 16px;
+  padding: 44px 32px;
+  text-align: center;
+  margin: 30px 0 10px 0;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.cta-banner-title {
+  font-size: 28px;
+  line-height: 1.3;
+  margin-bottom: 20px;
+}
+
+.cta-banner-desc {
+  color: #94a3b8;
+  font-size: 16px;
+  margin-bottom: 32px;
+}
+
+.btn-flex {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 36px;
+}
+
+/* Footer & Grid Layout */
+.footer {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.contact-sub-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 24px;
+}
+
+.footer-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.footer-info-col,
+.footer-payment-col,
+.footer-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-bottom {
+  gap: 12px;
+}
+
+.footer-bottom .logo {
+  justify-content: center;
+}
+
+.footer-desc {
+  color: #94a3b8;
+  font-size: 15px;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.copyright {
+  color: #475569;
+  font-size: 12px;
+}
+
+/* Social Links Section */
+.footer .social-links {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+.social-icon {
+  color: #94a3b8;
+  font-size: 32px;
+  transition: color 0.2s, transform 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+/* Payment Methods Styles */
+.payment-methods {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+.payment-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: #94a3b8;
+  font-size: 12px;
+  font-weight: 500;
+  transition: color 0.2s, transform 0.2s;
+  position: relative; /* Necessário para ancorar a tooltip */
+}
+
+.payment-item i {
+  font-size: 28px;
+  color: #64748b;
+  transition: color 0.2s;
+}
+
+/* Configuração da Tooltip do Pagamento baseada na .card-info-badge */
+.payment-item::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  width: max-content;
+  max-width: 200px;
+  background-color: #1e293b;
+  color: #f8fafc;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 500;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #334155;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 100;
+  transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+}
+
+/* Ativação do Hover para a Tooltip */
+.payment-item:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Efeitos de cores ao passar o mouse */
+.payment-item:hover {
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.payment-item:hover .fa-qrcode {
+  color: #32bcad;
+}
+
+.payment-item:hover .fa-credit-card {
+  color: #3b82f6; /* Paleta idêntica ao .card-icon do seu tema */
+}
+
+.payment-item:hover .fa-bitcoin {
+  color: #f7931a;
+}
+
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background-color: #1e293b;
+  color: #60a5fa;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: 1px solid #334155;
+  font-size: 16px;
+  z-index: 99;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: background-color 0.2s, transform 0.2s, color 0.2s;
+}
+
+/* Scroll Reveal Utility Classes */
+.fade-hidden {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.fade-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Keyframes for animations */
+@keyframes logoTyping {
+  from { width: 0; }
+  to { width: 8.5ch; } /* Ajustado para comportar o letter-spacing e Uppercase */
+}
+
+@keyframes logoBlink {
+  from, to { border-color: transparent; }
+  50% { border-color: #2563eb; }
+}
+
+@keyframes scrollTech {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Continuous Glowing Keyframes */
+@keyframes buttonGlow {
+  0% {
+    box-shadow: 0 0 4px rgba(37, 99, 235, 0.2);
+    filter: brightness(1);
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(37, 99, 235, 0.65), 0 4px 10px rgba(37, 99, 235, 0.2);
+    filter: brightness(1.1);
+  }
+  100% {
+    box-shadow: 0 0 4px rgba(37, 99, 235, 0.2);
+    filter: brightness(1);
+  }
+}
+
+/* Soft ambient glow keyframes for the main heading */
+@keyframes heroGlow {
+  0%, 100% {
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.05), 0 0 24px rgba(59, 130, 246, 0.15);
+  }
+  50% {
+    text-shadow: 0 0 18px rgba(255, 255, 255, 0.2), 0 0 36px rgba(59, 130, 246, 0.4);
+  }
+}
+
+/* Responsive & Wide Screen Desktop Media Queries */
+@media (min-width: 768px) {
+  body {
+    font-size: 17px;
+  }
+
+  .hero {
+    padding: 60px 0 80px 0;
+  }
+
+  .hero-title {
+    font-size: 48px;
+  }
+
+  /* Disables fade effect on the footer only on Desktop */
+  #contact.fade-hidden {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .card-list {
+    flex-direction: row;
+  }
+
+  .card {
+    flex: 1;
+  }
+
+  .cta-buttons {
+    flex-direction: row;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .specialties, .advantages {
+    padding: 40px 0 80px 0;
+  }
+
+  .section-title {
+    margin-bottom: 40px;
+  }
+
+  .tech-stack {
+    padding: 60px 0;
+  }
+
+  .tech-stack-title {
+    margin-bottom: 32px;
+  }
+
+  .cta-banner {
+    margin: 60px 0;
+  }
+
+  /* Three-Column Layout for Desktop */
+  .footer-grid {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    gap: 40px;
+    align-items: flex-start;
+  }
+
+  /* Left Column (Brand info) */
+  .footer-bottom {
+    flex: 1;
+    align-items: flex-start;
+    text-align: left;
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .footer-bottom .logo {
+    justify-content: flex-start;
+  }
+
+  .footer-desc {
+    margin: 0;
+    max-width: 100%;
+  }
+
+  /* Center Column (Payment) */
+  .footer-payment-col {
+    flex: 1;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Right Column (Social Network Links) */
+  .footer-info-col {
+    flex: 1;
+    align-items: flex-end;
+    align-items: center;
+  }
+
+  .footer .social-links {
+    justify-content: flex-end;
+  }
+
+  /* Desktop Hover Interactions */
+  .contact-btn:hover {
+    background-color: #2563eb;
+    transform: translateY(-1px);
+  }
+
+  .btn-primary:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-1px);
+  }
+
+  .card:hover,
+  .cta-banner:hover {
+    transform: translateY(-4px);
+    border-color: #2563eb;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 4px 12px rgba(37, 99, 235, 0.1);
+  }
+
+  .social-icon:hover {
+    color: #3b82f6;
+    transform: translateY(-2px);
+  }
+
+  .back-to-top:hover {
+    background-color: #2563eb;
+    color: #ffffff;
+    transform: translateY(-3px);
+  }
+
+  /* Ajuste fino da largura da tooltip em telas de desktop para não cortar bordas */
+  .card-info-badge::after {
+    width: 280px;
+  }
+}
